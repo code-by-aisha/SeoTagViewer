@@ -76,7 +76,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
   };
 
   return (
-    <Card className="sticky top-24 z-10 card-3d bg-animated animate-scale-in mb-6 mr-4">
+    <Card className="sticky top-24 z-10 card-3d bg-animated animate-scale-in mb-8 mr-6">
       <CardContent className="p-6">
         <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center font-display">
           <Globe className="text-primary mr-2 h-5 w-5 animate-glow-pulse" />

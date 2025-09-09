@@ -173,7 +173,11 @@
 }
 
 .card-3d {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card-3d + .card-3d {
+  margin-top: 1rem;
 }
 
 .card-3d:hover {
