@@ -13,10 +13,10 @@ export function MobilePreview({ result }: MobilePreviewProps) {
   };
 
   return (
-    <Card>
+    <Card className="card-3d bg-animated">
       <CardHeader>
-        <CardTitle className="flex items-center text-lg">
-          <Smartphone className="text-primary mr-2 h-5 w-5" />
+        <CardTitle className="flex items-center text-lg font-display">
+          <Smartphone className="text-primary mr-2 h-5 w-5 animate-glow-pulse" />
           Mobile Search Preview
         </CardTitle>
       </CardHeader>

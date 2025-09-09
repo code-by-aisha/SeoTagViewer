@@ -42,10 +42,10 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-slide-in-up">
       
       {/* Analysis Status Banner */}
-      <div className="bg-chart-2/10 border border-chart-2/20 rounded-lg p-4">
+      <div className="bg-chart-2/10 border border-chart-2/20 rounded-lg p-4 neon-glow card-3d">
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <CheckCircle className="text-chart-2 h-5 w-5" />
@@ -62,10 +62,10 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
       </div>
 
       {/* Meta Tags Analysis */}
-      <Card>
+      <Card className="card-3d bg-animated">
         <CardHeader>
-          <CardTitle className="flex items-center">
-            <Tag className="text-primary mr-2 h-5 w-5" />
+          <CardTitle className="flex items-center font-display">
+            <Tag className="text-primary mr-2 h-5 w-5 animate-glow-pulse" />
             Meta Tags Analysis
           </CardTitle>
         </CardHeader>
@@ -306,10 +306,10 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
       </Card>
 
       {/* Recommendations Panel */}
-      <Card>
+      <Card className="card-3d bg-animated">
         <CardHeader>
-          <CardTitle className="flex items-center">
-            <Lightbulb className="text-chart-4 mr-2 h-5 w-5" />
+          <CardTitle className="flex items-center font-display">
+            <Lightbulb className="text-chart-4 mr-2 h-5 w-5 animate-glow-pulse" />
             Recommendations
           </CardTitle>
         </CardHeader>

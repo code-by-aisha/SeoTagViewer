@@ -19,10 +19,10 @@ export function SocialPreviews({ result }: SocialPreviewsProps) {
     <div className="space-y-8">
       
       {/* Facebook Preview */}
-      <Card>
+      <Card className="card-3d bg-animated">
         <CardHeader>
-          <CardTitle className="flex items-center text-lg">
-            <Facebook className="text-blue-600 mr-2 h-5 w-5" />
+          <CardTitle className="flex items-center text-lg font-display">
+            <Facebook className="text-blue-600 mr-2 h-5 w-5 animate-glow-pulse" />
             Facebook Share Preview
           </CardTitle>
         </CardHeader>
@@ -58,10 +58,10 @@ export function SocialPreviews({ result }: SocialPreviewsProps) {
       </Card>
 
       {/* Twitter Preview */}
-      <Card>
+      <Card className="card-3d bg-animated">
         <CardHeader>
-          <CardTitle className="flex items-center text-lg">
-            <Twitter className="text-blue-400 mr-2 h-5 w-5" />
+          <CardTitle className="flex items-center text-lg font-display">
+            <Twitter className="text-blue-400 mr-2 h-5 w-5 animate-glow-pulse" />
             Twitter Card Preview
           </CardTitle>
         </CardHeader>

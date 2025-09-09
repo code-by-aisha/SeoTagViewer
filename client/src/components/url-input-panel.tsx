@@ -76,10 +76,10 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
   };
 
   return (
-    <Card className="sticky top-24">
+    <Card className="sticky top-24 card-3d bg-animated animate-scale-in">
       <CardContent className="p-6">
-        <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center">
-          <Globe className="text-primary mr-2 h-5 w-5" />
+        <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center font-display">
+          <Globe className="text-primary mr-2 h-5 w-5 animate-glow-pulse" />
           Website Analysis
         </h2>
         
@@ -96,7 +96,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
                     <div className="relative">
                       <Input
                         placeholder="https://example.com"
-                        className="pr-10"
+                        className="pr-10 input-futuristic"
                         data-testid="input-url"
                         {...field}
                       />
@@ -115,7 +115,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
             
             <Button 
               type="submit" 
-              className="w-full"
+              className="w-full button-3d neon-glow"
               disabled={isAnalyzing}
               data-testid="button-analyze"
             >
@@ -163,7 +163,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
               <Button 
                 variant="secondary" 
                 size="sm" 
-                className="flex-1"
+                className="flex-1 button-3d"
                 onClick={handleExportPDF}
                 data-testid="button-export-pdf"
               >
@@ -173,7 +173,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
               <Button 
                 variant="secondary" 
                 size="sm" 
-                className="flex-1"
+                className="flex-1 button-3d"
                 onClick={handleExportCSV}
                 data-testid="button-export-csv"
               >

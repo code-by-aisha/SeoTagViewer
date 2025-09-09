@@ -13,10 +13,10 @@ export function GooglePreview({ result }: GooglePreviewProps) {
   };
 
   return (
-    <Card>
+    <Card className="card-3d bg-animated">
       <CardHeader>
-        <CardTitle className="flex items-center text-lg">
-          <Globe className="text-primary mr-2 h-5 w-5" />
+        <CardTitle className="flex items-center text-lg font-display">
+          <Globe className="text-primary mr-2 h-5 w-5 animate-glow-pulse" />
           Google Search Result
         </CardTitle>
       </CardHeader>
