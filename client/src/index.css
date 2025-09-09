@@ -173,7 +173,7 @@
 }
 
 .card-3d {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .card-3d + .card-3d {
@@ -187,7 +187,7 @@
     0 0 15px hsl(189, 85%, 48% / 0.2),
     inset 0 1px 0 hsl(189, 85%, 48% / 0.1);
   border-color: hsl(189, 85%, 48% / 0.5);
-  z-index: 2;
+  z-index: 10;
 }
 
 .button-3d {

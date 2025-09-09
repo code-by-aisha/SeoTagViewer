@@ -44,7 +44,7 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-5 gap-8">
 
           {/* Left Sidebar - URL Input & Controls */}
           <div className="xl:col-span-1">
@@ -57,11 +57,11 @@ export default function Home() {
           </div>
 
           {/* Main Analysis Area */}
-          <div className="xl:col-span-3">
+          <div className="xl:col-span-4 xl:pl-4">
             {analysisResult ? (
               <AnalysisResults result={analysisResult} />
             ) : (
-              <div className="bg-card border border-border rounded-lg shadow-sm p-12 text-center card-3d animate-scale-in bg-animated">
+              <div className="bg-card border border-border rounded-lg shadow-sm p-8 text-center card-3d animate-scale-in bg-animated max-w-4xl">
                 <Search className="h-16 w-16 text-accent mx-auto mb-4 animate-float" />
                 <h2 className="text-xl font-semibold text-foreground mb-2 font-display">
                   Ready to Analyze
