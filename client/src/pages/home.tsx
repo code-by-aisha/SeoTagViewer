@@ -82,22 +82,24 @@ export default function Home() {
               Search & Social Previews
             </h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="animate-slide-in-up" style={{ animationDelay: '0.1s' }}>
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              <Card className="card-3d bg-animated p-6 animate-slide-in-up" style={{ animationDelay: '0.1s' }}>
                 <GooglePreview result={analysisResult} />
-              </div>
-              <div className="animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
+              </Card>
+              <Card className="card-3d bg-animated p-6 animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
                 <SocialPreviews result={analysisResult} />
-              </div>
+              </Card>
             </div>
 
             {/* Mobile Preview Section */}
-            <div className="mt-12 animate-slide-in-up" style={{ animationDelay: '0.3s' }}>
+            <div className="mt-8 animate-slide-in-up" style={{ animationDelay: '0.3s' }}>
               <h2 className="text-2xl font-bold text-foreground mb-8 flex items-center font-display">
                 <Search className="text-primary mr-3 h-8 w-8 animate-glow-pulse" />
                 Mobile Search Preview
               </h2>
-              <MobilePreview result={analysisResult} />
+              <Card className="card-3d bg-animated p-6">
+                <MobilePreview result={analysisResult} />
+              </Card>
             </div>
           </div>
         )}
