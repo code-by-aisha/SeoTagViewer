@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Search, Settings, HelpCircle } from "lucide-react";
+import { Search, HelpCircle, Settings } from "lucide-react";
 import { URLInputPanel } from "@/components/url-input-panel";
 import { AnalysisResults } from "@/components/analysis-results";
 import { GooglePreview } from "@/components/google-preview";
 import { SocialPreviews } from "@/components/social-previews";
 import { MobilePreview } from "@/components/mobile-preview";
+import { Card } from "@/components/ui/card";
 import { type SeoAnalysisResult } from "@shared/schema";
 
 export default function Home() {
@@ -44,7 +45,7 @@ export default function Home() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
-          
+
           {/* Left Sidebar - URL Input & Controls */}
           <div className="xl:col-span-1">
             <URLInputPanel 
