@@ -95,7 +95,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
                   <FormControl>
                     <div className="relative">
                       <Input
-                        placeholder="https://example.com"
+                        placeholder="example.com (https:// will be added automatically)"
                         className="pr-10 input-futuristic"
                         data-testid="input-url"
                         {...field}
@@ -106,7 +106,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
                     </div>
                   </FormControl>
                   <FormDescription>
-                    Enter a complete URL including https://
+                    Enter any website URL (https:// is added automatically)
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

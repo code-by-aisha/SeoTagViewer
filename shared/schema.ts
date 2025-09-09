@@ -40,7 +40,20 @@ export const insertSeoAnalysisSchema = createInsertSchema(seoAnalyses).omit({
 });
 
 export const seoAnalysisRequestSchema = z.object({
-  url: z.string().url("Please enter a valid URL"),
+  url: z.string()
+    .min(1, "Please enter a URL")
+    .transform((url) => {
+      // Remove any leading/trailing whitespace
+      url = url.trim();
+      
+      // Add https:// if no protocol is specified
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;
+      }
+      
+      return url;
+    })
+    .pipe(z.string().url("Please enter a valid URL")),
 });
 
 export interface SeoIssue {
