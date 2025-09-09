@@ -41,25 +41,136 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
     return 'bg-chart-2';
   };
 
+  // Calculate category scores
+  const calculateCategoryScore = (category: string) => {
+    const categoryIssues = result.issues.filter(issue => 
+      issue.field.toLowerCase().includes(category.toLowerCase())
+    );
+    
+    const criticalCount = categoryIssues.filter(i => i.severity === 'critical').length;
+    const highCount = categoryIssues.filter(i => i.severity === 'high').length;
+    const mediumCount = categoryIssues.filter(i => i.severity === 'medium').length;
+    
+    let score = 100;
+    score -= criticalCount * 25;
+    score -= highCount * 15;
+    score -= mediumCount * 5;
+    
+    return Math.max(0, score);
+  };
+
+  const titleScore = result.metaTags.title ? 
+    (result.characterCounts.title >= 30 && result.characterCounts.title <= 60 ? 100 : 75) : 0;
+  
+  const descriptionScore = result.metaTags.description ? 
+    (result.characterCounts.description >= 120 && result.characterCounts.description <= 160 ? 100 : 75) : 0;
+  
+  const openGraphScore = [result.metaTags.ogTitle, result.metaTags.ogDescription, result.metaTags.ogImage, result.metaTags.ogUrl]
+    .filter(Boolean).length * 25;
+  
+  const twitterScore = [result.metaTags.twitterCard, result.metaTags.twitterTitle, result.metaTags.twitterDescription]
+    .filter(Boolean).length * 33;
+
   return (
     <div className="space-y-6 animate-slide-in-up">
       
-      {/* Analysis Status Banner */}
-      <div className="bg-chart-2/10 border border-chart-2/20 rounded-lg p-4 neon-glow card-3d">
-        <div className="flex items-center">
-          <div className="flex-shrink-0">
-            <CheckCircle className="text-chart-2 h-5 w-5" />
-          </div>
-          <div className="ml-3">
-            <h3 className="text-sm font-medium text-foreground">
-              Analysis Complete
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              SEO score: {result.score}/100 • {result.issues.length} issues found
-            </p>
-          </div>
-        </div>
+      {/* SEO Score Dashboard */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        
+        {/* Overall Score */}
+        <Card className="card-3d neon-glow bg-gradient-to-br from-primary/20 to-accent/20">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-primary font-display mb-2" data-testid="overall-score">
+              {result.score}
+            </div>
+            <div className="text-sm text-muted-foreground mb-3">Overall SEO Score</div>
+            <Progress 
+              value={result.score} 
+              className="h-2" 
+              style={{
+                background: 'hsl(233, 24%, 22%)'
+              }}
+            />
+          </CardContent>
+        </Card>
+
+        {/* Title Tag Score */}
+        <Card className="card-3d neon-glow bg-gradient-to-br from-chart-2/20 to-chart-3/20">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-chart-2 font-display mb-2" data-testid="title-score">
+              {titleScore}
+            </div>
+            <div className="text-sm text-muted-foreground mb-3">Title Tag</div>
+            <Progress 
+              value={titleScore} 
+              className="h-2"
+              style={{
+                background: 'hsl(233, 24%, 22%)'
+              }}
+            />
+          </CardContent>
+        </Card>
+
+        {/* Description Score */}
+        <Card className="card-3d neon-glow bg-gradient-to-br from-chart-4/20 to-chart-1/20">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-chart-4 font-display mb-2" data-testid="description-score">
+              {descriptionScore}
+            </div>
+            <div className="text-sm text-muted-foreground mb-3">Meta Description</div>
+            <Progress 
+              value={descriptionScore} 
+              className="h-2"
+              style={{
+                background: 'hsl(233, 24%, 22%)'
+              }}
+            />
+          </CardContent>
+        </Card>
+
+        {/* Social Media Score */}
+        <Card className="card-3d neon-glow bg-gradient-to-br from-chart-5/20 to-primary/20">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-chart-5 font-display mb-2" data-testid="social-score">
+              {Math.round((openGraphScore + twitterScore) / 2)}
+            </div>
+            <div className="text-sm text-muted-foreground mb-3">Social Media</div>
+            <Progress 
+              value={Math.round((openGraphScore + twitterScore) / 2)} 
+              className="h-2"
+              style={{
+                background: 'hsl(233, 24%, 22%)'
+              }}
+            />
+          </CardContent>
+        </Card>
       </div>
+
+      {/* Quick Summary */}
+      <Card className="card-3d bg-animated">
+        <CardContent className="p-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-chart-2 mb-2">
+                {result.issues.filter(i => i.severity === 'critical' || i.severity === 'high').length}
+              </div>
+              <div className="text-sm text-muted-foreground">Critical & High Issues</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-chart-4 mb-2">
+                {result.recommendations.filter(r => r.priority === 'critical' || r.priority === 'high').length}
+              </div>
+              <div className="text-sm text-muted-foreground">Priority Actions</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-chart-3 mb-2">
+                {result.characterCounts.title + result.characterCounts.description}
+              </div>
+              <div className="text-sm text-muted-foreground">Total Meta Characters</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Meta Tags Analysis */}
       <Card className="card-3d bg-animated">

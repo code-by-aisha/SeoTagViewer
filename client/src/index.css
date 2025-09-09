@@ -169,15 +169,17 @@
     hsl(233, 24%, 15%) 0%, 
     hsl(233, 24%, 18%) 100%);
   position: relative;
+  z-index: 1;
 }
 
 .card-3d:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-4px) scale(1.01);
   box-shadow: 
-    0 20px 40px hsl(230, 21%, 8% / 0.4),
-    0 0 20px hsl(189, 85%, 48% / 0.3),
+    0 15px 30px hsl(230, 21%, 8% / 0.3),
+    0 0 15px hsl(189, 85%, 48% / 0.2),
     inset 0 1px 0 hsl(189, 85%, 48% / 0.1);
   border-color: hsl(189, 85%, 48% / 0.5);
+  z-index: 2;
 }
 
 .button-3d {
