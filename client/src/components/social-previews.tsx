@@ -1,5 +1,5 @@
 import { Facebook, Twitter, Info } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { type SeoAnalysisResult } from "@shared/schema";
 
 interface SocialPreviewsProps {
@@ -17,7 +17,7 @@ export function SocialPreviews({ result }: SocialPreviewsProps) {
 
   return (
     <div className="space-y-8">
-      
+
       {/* Facebook Preview */}
       <Card className="card-3d bg-animated">
         <CardHeader>
@@ -27,14 +27,14 @@ export function SocialPreviews({ result }: SocialPreviewsProps) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          
+
           <div className="bg-white border rounded-lg overflow-hidden shadow-sm" data-testid="facebook-preview">
-            <img 
+            <img
               src={getOgImage()}
-              alt="Open Graph preview image" 
-              className="w-full h-40 object-cover" 
+              alt="Open Graph preview image"
+              className="w-full h-40 object-cover"
             />
-            
+
             <div className="p-4">
               <div className="text-xs text-gray-500 mb-1 uppercase" data-testid="text-facebook-domain">
                 {new URL(result.url).hostname}
@@ -47,7 +47,7 @@ export function SocialPreviews({ result }: SocialPreviewsProps) {
               </p>
             </div>
           </div>
-          
+
           <div className="mt-4 p-3 bg-muted/50 rounded-md">
             <p className="text-xs text-muted-foreground">
               <Info className="inline mr-1 h-3 w-3" />
@@ -66,7 +66,7 @@ export function SocialPreviews({ result }: SocialPreviewsProps) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          
+
           <div className="bg-white border rounded-lg overflow-hidden shadow-sm max-w-lg" data-testid="twitter-preview">
             <div className="p-4 border-b">
               <div className="flex items-center">
@@ -78,14 +78,14 @@ export function SocialPreviews({ result }: SocialPreviewsProps) {
               </div>
               <p className="text-sm mt-3">Check out this awesome website!</p>
             </div>
-            
+
             <div className="border rounded-lg overflow-hidden m-4 mt-0">
-              <img 
+              <img
                 src={getTwitterImage()}
-                alt="Twitter card preview image" 
-                className="w-full h-32 object-cover" 
+                alt="Twitter card preview image"
+                className="w-full h-32 object-cover"
               />
-              
+
               <div className="p-3 bg-gray-50 border-t">
                 <div className="text-xs text-gray-500 mb-1" data-testid="text-twitter-domain">
                   {new URL(result.url).hostname}
@@ -94,17 +94,17 @@ export function SocialPreviews({ result }: SocialPreviewsProps) {
                   {result.metaTags.twitterTitle || result.metaTags.title || "Untitled Page"}
                 </h4>
                 <p className="text-xs text-gray-600" data-testid="text-twitter-description">
-                  {result.metaTags.twitterDescription || 
-                   result.metaTags.description || 
+                  {result.metaTags.twitterDescription ||
+                   result.metaTags.description ||
                    "No Twitter card description available"}
                 </p>
               </div>
             </div>
           </div>
-          
+
           <div className={`mt-4 p-3 rounded-md ${
-            !result.metaTags.twitterCard ? 
-            'bg-destructive/10 border border-destructive/20' : 
+            !result.metaTags.twitterCard ?
+            'bg-destructive/10 border border-destructive/20' :
             'bg-muted/50'
           }`}>
             <p className={`text-xs ${

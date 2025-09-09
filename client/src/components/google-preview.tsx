@@ -1,5 +1,5 @@
 import { Globe, Info } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { type SeoAnalysisResult } from "@shared/schema";
 
 interface GooglePreviewProps {
@@ -21,7 +21,7 @@ export function GooglePreview({ result }: GooglePreviewProps) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        
+
         <div className="bg-white border rounded-lg p-4 shadow-sm" data-testid="google-preview">
           <div className="mb-4">
             <div className="flex items-center text-xs text-green-700 mb-1">
@@ -41,7 +41,7 @@ export function GooglePreview({ result }: GooglePreviewProps) {
               }
             </p>
           </div>
-          
+
           <div className="border-t pt-3">
             <div className="flex items-center text-xs text-gray-500">
               <span>About this result</span>
@@ -49,7 +49,7 @@ export function GooglePreview({ result }: GooglePreviewProps) {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-4 p-3 bg-muted/50 rounded-md">
           <p className="text-xs text-muted-foreground">
             <Info className="inline mr-1 h-3 w-3" />

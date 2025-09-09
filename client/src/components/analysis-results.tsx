@@ -46,37 +46,37 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
     const categoryIssues = result.issues.filter(issue => 
       issue.field.toLowerCase().includes(category.toLowerCase())
     );
-    
+
     const criticalCount = categoryIssues.filter(i => i.severity === 'critical').length;
     const highCount = categoryIssues.filter(i => i.severity === 'high').length;
     const mediumCount = categoryIssues.filter(i => i.severity === 'medium').length;
-    
+
     let score = 100;
     score -= criticalCount * 25;
     score -= highCount * 15;
     score -= mediumCount * 5;
-    
+
     return Math.max(0, score);
   };
 
   const titleScore = result.metaTags.title ? 
     (result.characterCounts.title >= 30 && result.characterCounts.title <= 60 ? 100 : 75) : 0;
-  
+
   const descriptionScore = result.metaTags.description ? 
     (result.characterCounts.description >= 120 && result.characterCounts.description <= 160 ? 100 : 75) : 0;
-  
+
   const openGraphScore = [result.metaTags.ogTitle, result.metaTags.ogDescription, result.metaTags.ogImage, result.metaTags.ogUrl]
     .filter(Boolean).length * 25;
-  
+
   const twitterScore = [result.metaTags.twitterCard, result.metaTags.twitterTitle, result.metaTags.twitterDescription]
     .filter(Boolean).length * 33;
 
   return (
     <div className="space-y-6 animate-slide-in-up">
-      
+
       {/* SEO Score Dashboard */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        
+
         {/* Overall Score */}
         <Card className="card-3d neon-glow bg-gradient-to-br from-primary/20 to-accent/20">
           <CardContent className="p-6 text-center">
@@ -181,7 +181,7 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          
+
           {/* Title Tag */}
           <div className="border border-border rounded-lg p-4 card-3d animate-slide-in-up" style={{ animationDelay: '0.1s' }} data-testid="analysis-title">
             <div className="flex items-start justify-between mb-3">
@@ -218,7 +218,7 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
                 {result.characterCounts.title}/60 characters
               </div>
             </div>
-            
+
             {result.metaTags.title ? (
               <>
                 <div className="bg-muted rounded-md p-3 mb-3">
@@ -284,7 +284,7 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
                 {result.characterCounts.description}/160 characters
               </div>
             </div>
-            
+
             {result.metaTags.description ? (
               <>
                 <div className="bg-muted rounded-md p-3 mb-3">
@@ -382,10 +382,20 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center">
                 <Badge 
-                  variant={[result.metaTags.twitterCard, result.metaTags.twitterTitle, result.metaTags.twitterDescription].filter(Boolean).length >= 2 ? 'default' : 'destructive'}
+                  variant={
+                    [
+                      result.metaTags.twitterCard, 
+                      result.metaTags.twitterTitle, 
+                      result.metaTags.twitterDescription
+                    ].filter(Boolean).length >= 2 ? 'default' : 'destructive'
+                  }
                   className="mr-3"
                 >
-                  {[result.metaTags.twitterCard, result.metaTags.twitterTitle, result.metaTags.twitterDescription].filter(Boolean).length >= 2 ? (
+                  {[
+                    result.metaTags.twitterCard, 
+                    result.metaTags.twitterTitle, 
+                    result.metaTags.twitterDescription
+                  ].filter(Boolean).length >= 2 ? (
                     <>
                       <CheckCircle className="mr-1 h-3 w-3" />
                       Good
@@ -400,10 +410,18 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
                 <h3 className="text-sm font-medium text-foreground">Twitter Card Tags</h3>
               </div>
               <span className="text-xs text-muted-foreground">
-                {[result.metaTags.twitterCard, result.metaTags.twitterTitle, result.metaTags.twitterDescription].filter(Boolean).length}/3 present
+                {[
+                  result.metaTags.twitterCard, 
+                  result.metaTags.twitterTitle, 
+                  result.metaTags.twitterDescription
+                ].filter(Boolean).length}/3 present
               </span>
             </div>
-            {[result.metaTags.twitterCard, result.metaTags.twitterTitle, result.metaTags.twitterDescription].filter(Boolean).length < 2 && (
+            {[
+              result.metaTags.twitterCard, 
+              result.metaTags.twitterTitle, 
+              result.metaTags.twitterDescription
+            ].filter(Boolean).length < 2 && (
               <div className="bg-destructive/10 border border-destructive/20 rounded-md p-3">
                 <p className="text-xs text-destructive">
                   <XCircle className="inline mr-1 h-3 w-3" />
@@ -426,7 +444,7 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            
+
             {result.recommendations.map((rec, index) => (
               <div 
                 key={index}

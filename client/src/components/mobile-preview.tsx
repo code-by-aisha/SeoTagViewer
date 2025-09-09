@@ -1,5 +1,5 @@
 import { Smartphone, Info } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { type SeoAnalysisResult } from "@shared/schema";
 
 interface MobilePreviewProps {
@@ -35,7 +35,7 @@ export function MobilePreview({ result }: MobilePreviewProps) {
                   </span>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="pb-4">
                   <div className="flex items-center text-xs text-green-700 mb-1">
@@ -54,7 +54,7 @@ export function MobilePreview({ result }: MobilePreviewProps) {
                     }
                   </p>
                 </div>
-                
+
                 <div className="border-t pt-4">
                   <div className="text-xs text-gray-500 mb-2">Related searches</div>
                   <div className="space-y-2">
@@ -67,7 +67,7 @@ export function MobilePreview({ result }: MobilePreviewProps) {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-6 p-3 bg-muted/50 rounded-md text-center">
           <p className="text-xs text-muted-foreground">
             <Info className="inline mr-1 h-3 w-3" />

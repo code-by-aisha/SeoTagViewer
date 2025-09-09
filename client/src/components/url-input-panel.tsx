@@ -20,7 +20,7 @@ interface URLInputPanelProps {
 
 export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, analysisResult }: URLInputPanelProps) {
   const { toast } = useToast();
-  
+
   const form = useForm<SeoAnalysisRequest>({
     resolver: zodResolver(seoAnalysisRequestSchema),
     defaultValues: {
@@ -82,7 +82,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
           <Globe className="text-primary mr-2 h-5 w-5 animate-glow-pulse" />
           Website Analysis
         </h2>
-        
+
         {/* URL Input Form */}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -112,7 +112,7 @@ export function URLInputPanel({ onAnalysisResult, isAnalyzing, setIsAnalyzing, a
                 </FormItem>
               )}
             />
-            
+
             <Button 
               type="submit" 
               className="w-full button-3d neon-glow"
