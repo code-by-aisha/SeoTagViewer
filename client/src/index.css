@@ -172,6 +172,10 @@
   z-index: 1;
 }
 
+.card-3d {
+  margin-bottom: 1.5rem;
+}
+
 .card-3d:hover {
   transform: translateY(-4px) scale(1.01);
   box-shadow: 
