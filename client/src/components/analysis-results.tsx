@@ -72,7 +72,7 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
         <CardContent className="space-y-6">
           
           {/* Title Tag */}
-          <div className="border border-border rounded-lg p-4" data-testid="analysis-title">
+          <div className="border border-border rounded-lg p-4 card-3d animate-slide-in-up" style={{ animationDelay: '0.1s' }} data-testid="analysis-title">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center">
                 <Badge 
@@ -138,7 +138,7 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
           </div>
 
           {/* Meta Description */}
-          <div className="border border-border rounded-lg p-4" data-testid="analysis-description">
+          <div className="border border-border rounded-lg p-4 card-3d animate-slide-in-up" style={{ animationDelay: '0.2s' }} data-testid="analysis-description">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center">
                 <Badge 
@@ -213,7 +213,7 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
           </div>
 
           {/* Open Graph Tags */}
-          <div className="border border-border rounded-lg p-4" data-testid="analysis-opengraph">
+          <div className="border border-border rounded-lg p-4 card-3d animate-slide-in-up" style={{ animationDelay: '0.3s' }} data-testid="analysis-opengraph">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center">
                 <Badge 
@@ -267,7 +267,7 @@ export function AnalysisResults({ result }: AnalysisResultsProps) {
           </div>
 
           {/* Twitter Cards */}
-          <div className="border border-border rounded-lg p-4" data-testid="analysis-twitter">
+          <div className="border border-border rounded-lg p-4 card-3d animate-slide-in-up" style={{ animationDelay: '0.4s' }} data-testid="analysis-twitter">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center">
                 <Badge 
