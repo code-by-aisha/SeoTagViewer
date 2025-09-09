@@ -95,21 +95,32 @@ export default function Home() {
                 <SocialPreviews result={analysisResult} />
               </Card>
             </div>
-
-            {/* Mobile Preview Section */}
-            <div className="mt-8 animate-slide-in-up" style={{ animationDelay: '0.3s' }}>
-              <h2 className="text-2xl font-bold text-foreground mb-8 flex items-center font-display">
-                <Search className="text-primary mr-3 h-8 w-8 animate-glow-pulse" />
-                Mobile Search Preview
-              </h2>
-              <Card className="card-3d bg-animated p-6">
-                <MobilePreview result={analysisResult} />
-              </Card>
-            </div>
           </div>
         )}
 
       </div>
+
+      {/* Footer */}
+      <footer className="bg-card border-t border-border mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center">
+            <div className="flex items-center justify-center mb-4">
+              <Search className="text-primary mr-2 h-6 w-6 animate-glow-pulse" />
+              <span className="text-lg font-bold text-foreground font-display">SEO Analyzer</span>
+            </div>
+            <p className="text-muted-foreground text-sm mb-4">
+              Analyze your website's SEO performance and get actionable insights to improve your search rankings.
+            </p>
+            <div className="flex items-center justify-center space-x-6 text-xs text-muted-foreground">
+              <span>© 2024 SEO Analyzer</span>
+              <span>•</span>
+              <span>Built with React & TypeScript</span>
+              <span>•</span>
+              <span>Powered by Modern Web Technologies</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
