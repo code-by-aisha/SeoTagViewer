@@ -2,8 +2,7 @@
   "name": "rest-express",
   "version": "1.0.0",
   "type": "module",
-  "license": "MIT",
- "scripts": {
+  "license": "MIT","scripts": {
   "dev": "concurrently \"vite\" \"tsx server/index.ts\"",
   "build:client": "vite build --outDir dist/client",
   "build:server": "tsc -p tsconfig.server.json",
