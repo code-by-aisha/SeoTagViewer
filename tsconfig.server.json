@@ -15,5 +15,6 @@
     }
   },
   "include": ["server/**/*", "shared/**/*"]
+   "exclude": ["vite.config.ts"]
 }
 
