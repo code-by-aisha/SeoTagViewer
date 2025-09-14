@@ -17,8 +17,7 @@
   },
   "include": [
     "server/**/*",
-    "shared/**/*",
-    "vite.config.ts"
+    "shared/**/*"
   ],
   "exclude": [
     "node_modules",
