@@ -1,15 +1,20 @@
-import * as cheerio from 'cheerio';
+import * as cheerio from 'cheerio'; 
 import { type MetaTags, type SeoAnalysisResult, type SeoIssue, type SeoRecommendation } from '@shared/schema';
 
 export class SeoAnalyzer {
   async fetchHtml(url: string): Promise<string> {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
     try {
       const response = await fetch(url, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (compatible; SEO-Analyzer/1.0)',
         },
-        timeout: 10000,
+        signal: controller.signal, 
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -23,6 +28,8 @@ export class SeoAnalyzer {
       throw new Error('Failed to fetch URL: Unknown error');
     }
   }
+}
+
 
   extractMetaTags(html: string): MetaTags {
     const $ = cheerio.load(html);
