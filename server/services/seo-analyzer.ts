@@ -1,17 +1,25 @@
 import * as cheerio from 'cheerio'; 
-import { type MetaTags, type SeoAnalysisResult, type SeoIssue, type SeoRecommendation } from '@shared/schema';
+import * as cheerio from 'cheerio';
+import {
+  type MetaTags,
+  type SeoAnalysisResult,
+  type SeoIssue,
+  type SeoRecommendation
+} from '@shared/schema';
 
 export class SeoAnalyzer {
+  // Fetch HTML with timeout using AbortController
   async fetchHtml(url: string): Promise<string> {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+    const timeoutMs = 10000; // 10s
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
       const response = await fetch(url, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; SEO-Analyzer/1.0)',
+          'User-Agent': 'Mozilla/5.0 (compatible; SEO-Analyzer/1.0)'
         },
-        signal: controller.signal, 
+        signal: controller.signal
       });
 
       clearTimeout(timeoutId);
@@ -22,18 +30,18 @@ export class SeoAnalyzer {
 
       return await response.text();
     } catch (error) {
+      clearTimeout(timeoutId);
       if (error instanceof Error) {
+        // If aborted, message may include "The operation was aborted."
         throw new Error(`Failed to fetch URL: ${error.message}`);
       }
       throw new Error('Failed to fetch URL: Unknown error');
     }
   }
-}
-
 
   extractMetaTags(html: string): MetaTags {
     const $ = cheerio.load(html);
-    
+
     return {
       title: $('title').first().text().trim() || undefined,
       description: $('meta[name="description"]').attr('content')?.trim() || undefined,
@@ -50,7 +58,7 @@ export class SeoAnalyzer {
       twitterSite: $('meta[name="twitter:site"]').attr('content')?.trim() || undefined,
       viewport: $('meta[name="viewport"]').attr('content')?.trim() || undefined,
       robots: $('meta[name="robots"]').attr('content')?.trim() || undefined,
-      canonical: $('link[rel="canonical"]').attr('href')?.trim() || undefined,
+      canonical: $('link[rel="canonical"]').attr('href')?.trim() || undefined
     };
   }
 
@@ -259,7 +267,7 @@ export class SeoAnalyzer {
       recommendations,
       characterCounts: {
         title: metaTags.title?.length || 0,
-        description: metaTags.description?.length || 0,
+        description: metaTags.description?.length || 0
       }
     };
   }
@@ -276,3 +284,4 @@ export class SeoAnalyzer {
 }
 
 export const seoAnalyzer = new SeoAnalyzer();
+
